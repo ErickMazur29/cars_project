@@ -1,0 +1,18 @@
+# Ambientes virtuais
+venv/
+env/
+.env/
+ENV/
+
+# Configurações sensíveis
+.env
+*.env
+.secret
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django cache
+.cache/
