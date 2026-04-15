@@ -2,11 +2,11 @@
 
 {% block content %}
 
-    <form method="post">
-        {% csrf_token %}
-        <table>
-            {{ login_form }}
-            <input type="submit" value="Entrar">
-        </table>
-    </form>
+<form method="post">
+    {% csrf_token %}
+    <table>
+        {{ login_form }}
+        <input type="submit" value="Entrar">
+    </table>
+</form>
 {% endblock %}

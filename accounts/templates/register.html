@@ -2,29 +2,29 @@
 
 {% block content %}
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            {{ user_form.username.errors }}
-            <label for="usuario">Usuário: </label>
-            {{ user_form.username }}
-        </div>
+<form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        {{ user_form.username.errors }}
+        <label for="usuario">Usuário: </label>
+        {{ user_form.username }}
+    </div>
 
-        <div class="form-group">
-            {{ user_form.password1.errors }}
-            <label for="password1">Senha: </label>
-            {{ user_form.password1 }}
-        </div>
+    <div class="form-group">
+        {{ user_form.password1.errors }}
+        <label for="password1">Senha: </label>
+        {{ user_form.password1 }}
+    </div>
 
-        <div class="form-group">
-            {{ user_form.password2.errors }}
-            <label for="password2">Corfirmação de Senha: </label>
-            {{ user_form.password2 }}
-        </div>
+    <div class="form-group">
+        {{ user_form.password2.errors }}
+        <label for="password2">Corfirmação de Senha: </label>
+        {{ user_form.password2 }}
+    </div>
 
-        <div class="form-group">
-            <input type="submit" value="Registrar">
-        </div>
-    </form>
+    <div class="form-group">
+        <input type="submit" value="Registrar">
+    </div>
+</form>
 
 {% endblock %}
