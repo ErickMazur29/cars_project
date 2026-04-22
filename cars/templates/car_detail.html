@@ -2,6 +2,7 @@
 
 {% block content %}
 <style>
+
   .car-card {
     background-color: #e3e1e1;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
@@ -87,4 +88,11 @@
   <p><strong>Placa:</strong> {{ object.plate }}</p>
   <p><strong>Preço:</strong> R$ {{ object.value }}</p>
 </div>
+
+{% if user.is_authenticated %}
+  <div class="buttons-container">
+    <a href="{% url 'car_update' pk=car.pk %}" class="btn btn-primary">Editar</a> <!--o parametro no pk é obrigatorio para o django entender-->
+    <a href="{% url 'car_delete' pk=car.pk %}" class="btn btn-danger">Deletar</a>
+  </div>
+{% endif %}
 {% endblock %}

@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div style="width: 400px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+    
+    <h2 style="margin-top: 0; text-align: center;">Entrar</h2>
 
-<form method="post">
-    {% csrf_token %}
-    <table>
-        {{ login_form }}
-        <input type="submit" value="Entrar">
-    </table>
-</form>
+    <form method="post">
+        {% csrf_token %}
+        {{ login_form.as_p }}
+        
+        <button type="submit" style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            Entrar
+        </button>
+    </form>
+    
+</div>
 {% endblock %}
