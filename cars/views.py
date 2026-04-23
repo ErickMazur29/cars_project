@@ -3,7 +3,11 @@ from cars.models import Car
 from django.urls import reverse_lazy
 from cars.forms import CarModelForm
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
+
+#Pagina inicial
 def index(request):
     return render(request, 'index.html')
 
@@ -22,13 +26,6 @@ class CarsListView(ListView):
             cars = cars.filter(model__icontains = search)
         return cars
 
-#Faz o formulario e gera seus registros
-class NewCarCreateView(CreateView):
-    model = Car
-    form_class = CarModelForm
-    template_name = 'new_car.html'
-    success_url = '/cars/'
-        
 
 #Gera pagina de detalhes de cada carro
 class CarDetailView(DetailView):
@@ -36,7 +33,17 @@ class CarDetailView(DetailView):
     template_name = 'car_detail.html'
 
 
-#Editar carro especifico
+#Faz o formulario e gera seus registros + requisição de login
+@method_decorator(login_required(login_url='login'), name='dispatch')
+class NewCarCreateView(CreateView):
+    model = Car
+    form_class = CarModelForm
+    template_name = 'new_car.html'
+    success_url = '/cars/'
+
+
+#Editar carro especifico + requisição de login
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CarUpdateView(UpdateView):
     model = Car
     form_class = CarModelForm
@@ -47,6 +54,9 @@ class CarUpdateView(UpdateView):
     def get_success_url(self):
         return reverse_lazy('car_detail', kwargs={'pk': self.object.pk})
 
+
+#Deletar carro + requisição de login
+@method_decorator(login_required(login_url='login'), name='dispatch')
 class CarDeleteView(DeleteView):
     model = Car
     template_name = 'car_delete.html'
