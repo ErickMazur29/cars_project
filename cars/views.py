@@ -61,3 +61,4 @@ class CarDeleteView(DeleteView):
     model = Car
     template_name = 'car_delete.html'
     context_object_name = 'car'
+    success_url = '/cars/'
