@@ -3,7 +3,6 @@ from django.db.models import Sum
 from django.dispatch import receiver
 from cars.models import Car, CarInventory
 
-
 #Função para autalização de inventario de carros
 def car_inventory_update():
     cars_count = Car.objects.count() # pega o valor da qtd de carros
@@ -20,7 +19,8 @@ def car_inventory_update():
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
     if not instance.bio: # se não  tiver valor na bio de Car, sera feito uma bio automatica
-        instance.bio = 'Este carro não possui descrição'
+        ai_bio = f"Modelo {instance.model} de boa usabilidade"
+        instance.bio = ai_bio
 
 @receiver(post_save, sender=Car)
 def car_post_save(sender, instance, **kwargs):
