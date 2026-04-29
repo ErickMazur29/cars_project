@@ -18,7 +18,7 @@ class Car(models.Model):
     plate = models.CharField(max_length = 10, blank = True, null = True)
     photo = models.ImageField(upload_to = 'cars/', blank = True, null = True)
     value =  models.FloatField(blank = True, null = True)
-    bio = models.TextField(blank=True, null=True)
+    bio = models.TextField(blank=True, null=True,  help_text="Se não preencher, uma descrição automática será gerada.")
 
     def __str__(self):
         return self.model # retorna o nome o str com o nome do modelo, ao inves do padrão

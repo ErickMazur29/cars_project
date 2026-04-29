@@ -18,9 +18,16 @@ def car_inventory_update():
 
 @receiver(pre_save, sender=Car)
 def car_pre_save(sender, instance, **kwargs):
-    if not instance.bio: # se não  tiver valor na bio de Car, sera feito uma bio automatica
-        ai_bio = f"Modelo {instance.model} de boa usabilidade"
-        instance.bio = ai_bio
+    if not instance.bio:
+        instance.bio = (
+            f"O {instance.brand.name} {instance.model}, ano modelo {instance.model_year} "
+            f"(fabricado em {instance.factory_year}), é uma excelente opção para quem busca "
+            f"conforto, desempenho e confiabilidade no dia a dia. "
+            f"Este veículo encontra-se em ótimo estado de conservação, pronto para uso, "
+            f"atendendo bem tanto às necessidades urbanas quanto a viagens. "
+            f"Placa {instance.plate}. Disponível pelo valor de R$ {instance.value:,.2f}, "
+            f"representando uma ótima oportunidade."
+        )
 
 @receiver(post_save, sender=Car)
 def car_post_save(sender, instance, **kwargs):

@@ -23,7 +23,7 @@
 
   .car-card img {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
   }
 
@@ -79,6 +79,12 @@
   a {
     text-decoration: none !important;
   }
+  .descricao{
+    padding: 5px;
+    text-align: justify;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
 </style>
 <div class="car-card">
   {% if car.photo %}
@@ -92,7 +98,9 @@
   <p><strong>Placa:</strong> {{ object.plate }}</p>
   <p><strong>Preço:</strong> R$ {{ object.value }}</p>
   {% if object.bio %}
-    <p><strong>Descrição: </strong>{{ object.bio }}</p>
+    <div class="descricao">
+      <p><strong>Descrição: </strong>{{ object.bio }}</p
+    </div>
   {% endif %}
 </div>
 
